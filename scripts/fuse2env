@@ -1,0 +1,19 @@
+#! /bin/bash
+
+# Author: bugnofree
+# Filename: fuse2env
+# Date: 2018-09-18
+# Contact: pwnkeeper@gmail.com
+
+FUSEROOT=$HOME/.local/fuse2
+if [[ ! $0 =~ "bash" ]]
+then
+    echo Usage: source $(basename $0)
+elif [[ ! $FUSEENV ]]
+then
+    FUSEENV=1
+    export PATH=$FUSEROOT/bin:$PATH
+    export CPATH=$FUSEROOT/include:$CPATH
+    export LD_LIBRARY_PATH=$FUSEROOT/lib:$LD_LIBRARY_PATH
+    export PKG_CONFIG_PATH=$FUSEROOT/lib/pkgconfig:$PKG_CONFIG_PATH
+fi
