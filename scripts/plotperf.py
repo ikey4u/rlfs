@@ -84,6 +84,7 @@ def plotperf(perfdir, namelist, title, outname):
     plt.show()
 
 if __name__ == '__main__':
+    pass
     #  onenodedir = ""
     #  four_nodes_dir = ""
     #  plotperf(onenodedir, [8, 64, 128, 256], "One Node Testing", "onenode")
