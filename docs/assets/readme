@@ -1,0 +1,39 @@
+1) vim 插件使用说明
+为了方便在 vim 编辑时实时预览,可以安装 vimlatex 插件,
+在每一个 tex 文件头两行加入:
+%! TEX program = xelatex
+%! TEX root = main.tex
+然后使用 \ll 进行实时预览,使用 \lv 进行预览.
+2017-08-28
+
+包说明:
+pmat 用于书写矩阵,图标包 typicons 用于插入各种图标.
+它们都可以通过执行 install-pkgs 来完成安装.
+安装目录位于 $HOME/texmf
+
+2) titlesec 的一个 bug
+使用 titlesec 2.10.1 版本会导致这一 bug 出现,详情见:
+https://tex.stackexchange.com/questions/299969/titlesec-loss-of-section-numbering-with-the-new-update-2016-03-15
+该问题在 2.10.2 中已经修复,所以解决方法如下:
+mkdir -p ~/texmf/tex/latex/titlesec/ ; wget http://mirrors.ctan.org/macros/latex/contrib/titlesec/titlesec.sty -O ~/texmf/tex/latex/titlesec/titlesec.sty
+查看版本可以在编译的输出中定位 titlesec.sty 的位置,然后打开该文
+件即可查看版本信息.
+
+
+2017-12-24
+
+3) assets 目录
+
+assets/
+├── notes-preface.tex
+└── sticky-preface.tex
+
+notes-preface 用于做笔记时的序言章节
+sticke-preface 用于做便签时的序言章节
+
+2018-03-15
+
+4) dependency
+
+Fonts:
+    Download from : https://github.com/ikey4u/blog/tree/master/disk/fonts

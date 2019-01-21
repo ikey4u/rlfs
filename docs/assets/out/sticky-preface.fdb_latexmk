@@ -1,0 +1,14 @@
+# Fdb version 3
+["xdvipdfmx"] 0 "out/sticky-preface.xdv" "out/sticky-preface.pdf" "out/sticky-preface" 0
+  "out/sticky-preface.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "out/sticky-preface.pdf"
+["xelatex"] 1548080810 "sticky-preface.tex" "out/sticky-preface.xdv" "sticky-preface" 1548080810
+  "/usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf" 1522066949 33362 cf75436e19743e94a92a6b1b9183c434 ""
+  "/usr/local/texlive/2018/texmf-var/web2c/xetex/xelatex.fmt" 1547001307 3731938 8da10e7dee6d39ab316cc3209c6bebfe ""
+  "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
+  "out/sticky-preface.aux" 1548080432 8 a94a2480d3289e625eea47cd1b285758 ""
+  "sticky-preface.tex" 1548080808 248 ec6a89e9cefabceacea221280c7c9733 ""
+  (generated)
+  "out/sticky-preface.xdv"
+  "out/sticky-preface.log"

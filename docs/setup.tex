@@ -1,0 +1,223 @@
+%! TEX program = xelatex
+%! TEX root = main.tex
+\documentclass[a4paper,11pt]{article}
+\usepackage{geometry}
+\geometry{left=1.5cm,right=5mm,top=1cm,bottom=1.5cm}
+%============================中文支持==============================
+%中文自动换行
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+%中文编码支持
+\usepackage{xltxtra,fontspec,xunicode}
+ %中文支持包
+\usepackage{xeCJK}
+%书签
+\usepackage{CJKutf8}
+%1. 文件开头加入\usepackage{pdfpages}
+%2. 文件中使用\includepdf{mypdffile.pdf} 插入pdf文件。
+\usepackage{pdfpages}
+%============================图形以及符号===============================
+%避免浮动
+\usepackage{float}
+%插入图片的宏包
+\usepackage{graphicx}
+%图标包 typicous
+\usepackage{typicons}
+%作图
+\usepackage{tikz}
+\usetikzlibrary{graphs}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepgfplotslibrary{groupplots}
+%=======================页面,段落,行距,超链接设置===============================
+\usepackage{ulem}  %下划线(uline),波浪线(uwave),双下划线(uuline)
+                   %删除线(sout),斜删除线(xout),虚线(dashuline),加点(dotuline)
+\usepackage{geometry} %横向布局,用横向布局时,使用\usepackage[landscape]{geometry}
+%\usepackage[a3paper]{geometry} %a3纸张大小
+%\geometry{left=1cm,right=1cm,top=1.5cm,bottom=1.5cm}
+\usepackage{indentfirst} %缩进
+%%设置缩进
+\setlength{\parindent}{2em}
+%设置行距
+\linespread{1.6}
+%加入超链接,用法为\url{https://www.google.com}或\href{https://www.google.com}{Google}
+%这里还必须指定为unicode方式,以使书签正常显示
+\usepackage[unicode,colorlinks,linkcolor=black,anchorcolor=blue,citecolor=green]{hyperref}
+%========================数学公式==================================
+\usepackage{latexsym}
+\usepackage{amsmath}                 % AMS LaTeX宏包
+\usepackage{amssymb}                 % 用来排版漂亮的数学公式
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}                % 英文花体字体
+\usepackage{bm}                      % 数学公式中的黑斜体
+\usepackage{relsize}                 % 调整公式字体大小：\mathsmaller, \mathlarger
+\usepackage{caption}                % 浮动图形和表格标题样式
+\usepackage{times}
+\usepackage{esint} %面积分符号\oiint
+\usepackage{mathdots}
+\allowdisplaybreaks
+%========================字体设置=================================
+%中文字体
+\setCJKmainfont{YouYuan}
+\setCJKsansfont{YaHei Consolas Hybrid}
+\setCJKmonofont{YaHei Consolas Hybrid}
+\setCJKfamilyfont{SimSun}{SimSun}
+\setCJKfamilyfont{SimHei}{SimHei}
+\setCJKfamilyfont{FangSong}{FangSong}
+\setCJKfamilyfont{KaiTi}{KaiTi}
+\setCJKfamilyfont{YouYuan}{YouYuan}
+\newcommand{\song}{\CJKfamily{SimSun}} % 宋体
+\newcommand{\hei}{\CJKfamily{SimHei}}   % 黑体
+\newcommand{\fs}{\CJKfamily{FangSong}}     % 仿宋
+\newcommand{\kai}{\CJKfamily{KaiTi}}   % 楷体
+\newcommand{\yy}{\CJKfamily{YouYuan}}   % 楷体
+%英文字体
+\setmainfont{Source Code Pro}
+\setmonofont{Source Code Pro}
+% 其他英文字体别名
+% 使用方法如下:{\sp :g/pattern/s/old/new/g}
+\newfontfamily\sp{Segoe Print}
+
+%数学长等号
+\usepackage{extarrows}
+%特殊符号
+\usepackage{bbding}
+%矩阵中使用虚线的宏包
+\usepackage{pmat}
+%=======================页眉页脚设置=======================
+%以下两行设置脚注
+\renewcommand*{\thefootnote}{\arabic{footnote}} %脚注为罗马数字编号
+\usepackage[perpage,stable]{footmisc} % 每页重新编号,如果不希望这样可以去掉 [perpage]
+
+\usepackage{fancyhdr}
+\usepackage{pageslts}
+%设置subsubsection{}
+%\setcounter{secnumdepth}{5}%设置标题深度为5
+%subsubsection{} level3
+%paragraph{} level4
+%subparagraph{} level5
+\pagenumbering{arabic} %默认选用的页码为数字格式
+%==========================代码格式化包===============================
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage[colorlinks,linkcolor=black,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage{listings}
+
+%一般 lstlisitng 样式
+\lstdefinestyle{general}{
+    basicstyle=\linespread{0.8}\small\ttfamily, % 代码行距设置为 0.8
+    frameround=fttt,
+    frame=trBL,
+    numbers=left,
+    firstnumber=1,
+    morecomment=[l],
+    keepspaces=true,
+    morecomment=[s][\color{blue}]{/*+}{*/},
+    morecomment=[s][\color{green}]{/*-}{*/},
+    morecomment=[s][\color{red}]{/**}{*/},
+}
+
+% 模拟 verb 环境实现自动换行
+\lstdefinestyle{verb} {
+    aboveskip=10pt, % lst 和上面的间距
+    belowskip=0pt, % lst 和下面的间距
+    basicstyle=\linespread{0.8}\small\ttfamily,  % 代码行距设置为 0.8
+    columns=flexible,
+    breaklines=true, % 启用自动换行
+    frame=single, % 单边框
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, % 换行符号
+}
+
+%自定义行间极限符号
+\newcommand{\ilim}{\lim\limits}
+%=========================自定义目录====================
+\renewcommand{\abstractname}{}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+% 自定义图片标题的名称
+\renewcommand{\figurename}{图}
+% 自定义表格标题的名称
+\renewcommand{\tablename}{表}
+% 自定义代码段标题
+\renewcommand{\lstlistingname}{代码}
+
+%自定义向量粗体显示
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+%\usepackage{fouriernc}
+%改善自定义圆圈数字
+%在枚举环境中可以这么做:
+%\begin{enumerate}[label=\protect\circled{\arabic*}]
+%\item First item
+%\item Second item
+%\item Third item
+%\item Fourth item
+%\end{enumerate}
+%在单个语句中可以这么做:\circled{1} \circled{2} \circled{3}
+\usepackage{enumitem}
+% 注意这种圆圈数字有限制,不能在 listing 环境中使用
+% 在 listing 中可以使用\textcircled{\raisebox{-0.9pt}{8}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+%加载目录以及标题设置宏包
+\usepackage{titlesec}
+\usepackage{titletoc}
+%设置目录中的字体,编号以及边距:
+\titlecontents{part}[10mm]                          %设置part的编号距离纸张左侧10mm处开始打印
+{\fontsize{13pt}{10pt}\selectfont \song}            %字体设置为12pt,行距设置为10pt,字体设置为宋体
+{\contentslabel{2em} }                              %part编号和标题之间的距离为2em
+{}
+{ \contentsmargin{4mm} \titlerule*{.}\contentspage} %设置标题右侧页码与连接符号之间的距离为4mm,设置标题和页码之间的连接符号为点,并设置间隔距离
+
+
+\renewcommand\thesection{\arabic{section}}          %解决section从0.x开始的问题
+\titlecontents{section}[10mm]                       %设置section的编号距离纸张左侧10mm处开始打印
+{\fontsize{12pt}{10pt}\selectfont \song}            %字体设置为12pt,行距设置为10pt,字体设置为宋体
+{\contentslabel{2em} }                              %section编号和标题之间的距离为2em
+{}
+{ \contentsmargin{4mm} \titlerule*{.}\contentspage} %设置标题右侧页码与连接符号之间的距离为4mm,设置标题和页码之间的连接符号为点,并设置间隔距离
+
+
+\titlecontents{subsection}[22mm]
+{\fontsize{11pt}{10pt}\selectfont \song}
+{\contentslabel{3em}}
+{}
+{ \contentsmargin{4mm} \titlerule*{.}\contentspage}
+
+\titlecontents{subsubsection}[37mm]
+{\fontsize{10pt}{10pt}\selectfont \song}
+{\contentslabel{4em}}
+{}
+{ \contentsmargin{4mm} \titlerule*{.}\contentspage}
+%%设置正文中的标题大小以及字体
+\titleformat{\part} {\LARGE\yy} {\thesection}{1em}{\centering}{} %part标题居中显示
+\titleformat{\section} {\LARGE\yy} {\thesection}{1em}{}
+\titleformat{\subsection} {\Large\yy} {\thesubsection}{1em}{}
+\titleformat{\subsubsection} {\large\yy} {\thesubsubsection}{1em}{}
+
+%设置分类图
+\newenvironment{subgroup} {$\left\{\tabular{l}} {\endtabular\right.$}
+%\begin{subgroup}
+%    数模混合计算机 \\[1em]
+%    模拟计算机\\[1em]
+%    数字计算机
+%    \begin{subgroup}
+%        专用计算机 \\
+%        通用计算机
+%        \begin{subgroup}
+%            巨型机\\
+%            大型机\\
+%            小型机\\
+%            微型机\\
+%            工作站\\
+%            服务器
+%        \end{subgroup}
+%    \end{subgroup} \\[5em]
+%    未来计算机
+%    \begin{subgroup}
+%        量子计算机 \\
+%        生物计算机
+%    \end{subgroup}
+%\end{subgroup}
